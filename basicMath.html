@@ -1,0 +1,117 @@
+<html>
+	<head>
+		<title>Math</title>
+	</head>
+	<body>
+		<script>
+	var newClient = {
+	"name":"Joe",
+  "pic":"pic",
+  "q1":2,
+  "q2":4,
+  "q3":3,
+  "q4":1};
+var newClientConverted = [];
+var currentClients = [];
+var compareList = [];
+var Clients = [{
+	"name":"Bill",
+  "pic":"nan",
+	"q1":3,
+  "q2":3,
+  "q3":2,
+  "q4":6
+},{
+	"name":"Jane",
+  "pic":"nan",
+	"q1":2,
+  "q2":2,
+  "q3":4,
+  "q4":5
+},{
+	"name":"Alice",
+	"pic":'ban',
+	"q1": 4, 
+	"q2": 2, 
+	"q3": 1, 
+	"q4": 5, 
+},{
+	"name":"Mary",
+	"pic":'ban',
+	"q1": 1, 
+	"q2": 3, 
+	"q3": 5, 
+	"q4": 5, 
+}];
+
+var num1 = 2;
+var num2 = 5;
+function foo(num1 , num2) {
+   return Math.abs(num1-num2);
+} //console.log(foo(2,5));
+//console.log(foo(5,2));
+//console.log(Clients[0].name);
+//push objects into array
+//Clients.push(newClient);
+function grabUsers(){
+	for(i=0; i < Clients.length; i++){
+  	var clientPos = [];
+  	clientPos.push(Clients[i].name, Clients[i].pic, Clients[i].q1, Clients[i].q2, Clients[i].q3, Clients[i].q4); 
+    //console.log(clientPos);
+    currentClients.push(clientPos);
+  }
+}
+grabUsers();
+
+
+console.log('hi ' +currentClients.length);
+
+function convertNewClient(){
+	newClientConverted.push(newClient.name, newClient.pic, newClient.q1, newClient.q2, newClient.q3, newClient.q4);
+}
+convertNewClient();
+console.log('-----------');
+//console.log(newClientConverted);
+
+//console.log(currentClients[0].length);
+
+function compareMine(){
+	console.log('compare talking');
+	for(i = 0; i < currentClients.length; i++){
+		console.log('first for talking');
+		var comparedScore = 0;
+		  	for(j = 2; j < currentClients[i].length; j++){
+		  		console.log('second for talking');
+		  		var num1 = newClientConverted[j];
+		  		var num2 = currentClients[i][j];
+		  		var testNum = 0;
+		  		
+		  		console.log('Hi Im num1 ' + num1);
+		  		console.log('Im num2 ' + num2);
+		    	var compared = Math.abs(num1 - num2);
+		    	console.log('######');
+		    	console.log('compared ' + compared);
+		    	comparedScore += compared;
+		    	//console.log('new Compared Score: ' + total)
+		    
+		    }console.log('Total difference of that index: ' + comparedScore);
+		    compareList.push(comparedScore);
+		    console.log('begin next object');
+  	}
+ }
+ 
+
+ compareMine(); 
+ console.log(compareList);
+ //var answer = Math.min.apply(null, compareList) // 1
+ //var getIndex = 
+
+ function indexOfSmallest() {
+ return compareList.indexOf(Math.min.apply(Math, compareList));
+}
+ document.write('based on your score, you would get along great with '  + Clients[indexOfSmallest()].name);
+ Clients.push(newClient);
+ console.log(Clients);
+		</script>
+	</body>
+</html>
